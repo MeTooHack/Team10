@@ -23,7 +23,7 @@ Calling enroll builds the model. It can take a second or ten. Return value is a 
 
 # Classifying who's speaking (mono wav again!)
 ```
-curl -X POST -F audio=<filename> localhost:5000/classify
+curl -X POST -F audio=@<filename> localhost:5000/classify
 ```
 
 Calling this endpoint will return the name of the user with the highest probability of appaering in this clip
