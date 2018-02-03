@@ -4,41 +4,16 @@ import React from "react";
 import "./SuppressionTechniquesList.css";
 
 const techniques = [
-  {
-    name: "Making Invisible",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Ridicule",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Withholding information",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Double bind",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Heap blame or Put to shame",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Objectifying ",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  },
-  {
-    name: "Force or Threat to force",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-  }
+    {
+        title: 'Interruptions',
+        description: <div className="suppression-desc">If one line indicates that someone is talking and another line crosses that line from below we have a likely interruption. An example is show here
+            <img src="images/interruption.png" />
+        </div>
+    },
+    {
+        title: 'Is everyone heard on the important topics',
+        description: 'It\'s important that everyone gets an equal say in the meeting, but just looking at how long each person speaks will not tell you the whole truth. You also need to make sure that everyone is heard when the important topics are discussed and when decisions are made.',
+    },
 ];
 export function SuppressionTechniquesList() {
   return (
@@ -52,8 +27,17 @@ function Technique(props) {
   const { technique } = props;
   return (
     <div className="suppression-technique">
-      <h1 className="suppression-name">{technique.name}</h1>
-      <div className="suppression-desc">{technique.description}</div>
+        {
+            typeof technique.title === 'string'
+                ? <h1 className="suppression-name">{technique.title}</h1>
+                : technique.title
+        }
+
+        {
+            typeof technique.description === 'string'
+                ? <div className="suppression-desc">{technique.description}</div>
+                : technique.description
+        }
     </div>
   );
 }
