@@ -1,6 +1,7 @@
 import React from "react";
 import { VoiceGraph } from "./VoiceGraph";
 import { SuppressionTechniquesList } from "./SuppressionTechniquesList";
+import AudioRecorder from "./AudioRecorder";
 import "./App.css";
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       </header>
 
       <div style={{ display: "flex", flexDirection: "row" }}>
+        <AudioRecorder />
         <div style={{ flexGrow: 1 }}>
           <VoiceGraph />
         </div>
