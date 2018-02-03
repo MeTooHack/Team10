@@ -51,34 +51,31 @@ export default class AudioRecorder extends React.Component {
     const formData = new FormData()
     formData.append('audio', this.state.blob);
 
-    const response = await fetch('http://localhost:5000/gender', {
+    const response = await fetch(this.props.endpoint, {
       method: 'POST',
       body: formData
     });
 
     if (!response.ok) {
-      this.setState({
-        error: {
-          status: response.statusCode,
-          statusText: response.statusText,
-          message: response.text()
-        }
+      this.props.onResponse({
+        status: response.statusCode,
+        statusText: response.statusText,
+        message: await response.text()
       });
-    } else {
-      this.setState({
-        error: null,
-        gender: await response.json()
-      })
+    }
+
+    try {
+      this.props.onResponse(null, await response.json());
+    } catch (error) {
+      this.props.onResponse(error);
     }
   }
 
   render() {
-    const { isRecording, blob, gender, error } = this.state;
+    const { isRecording, blob } = this.state;
     return (
       <div>
         <h2>Record Audio</h2>
-        <p>{JSON.stringify(gender)}</p>
-        <p>{JSON.stringify(error)}</p>
         <button onClick={this.start}>Start</button>
         <button onClick={this.stop} disabled={!isRecording}>
           Stop

@@ -5,24 +5,35 @@ import { GenderDistribution } from "./GenderDistribution";
 import AudioRecorder from "./AudioRecorder";
 import "./App.css";
 
-export default function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Team TÄN</h1>
-      </header>
+export default class App extends React.Component {
+  state = {
+    gender: null
+  }
 
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <AudioRecorder />
-        <div style={{ flexGrow: 1 }}>
-          <VoiceGraph />
-          <GenderDistribution />
-        </div>
+  handleGenderResponse = (error, gender) => {
+    this.setState({ gender });
+  }
 
-        <div style={{ width: "400px" }}>
-          <SuppressionTechniquesList />
+  render() {
+    const { gender } = this.state;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Team TÄN</h1>
+        </header>
+
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <AudioRecorder endpoint="http://localhost:5000/gender" onResponse={this.handleGenderResponse} />
+          <div style={{ flexGrow: 1 }}>
+            <VoiceGraph />
+            {gender && <GenderDistribution {...gender}/>}
+          </div>
+
+          <div style={{ width: "400px" }}>
+            <SuppressionTechniquesList />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

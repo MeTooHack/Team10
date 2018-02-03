@@ -3,10 +3,10 @@
 import React from "react";
 import PieChart from "react-minimal-pie-chart";
 
-export function GenderDistribution() {
+export function GenderDistribution({ male, female }) {
   const data = [
-    { value: 10, key: "women", color: "#E38627" },
-    { value: 15, key: "men", color: "#C13C37" }
+    { value: female, key: "female", color: "#E38627" },
+    { value: male, key: "male", color: "#C13C37" }
   ];
 
   return (
