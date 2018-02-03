@@ -11,7 +11,6 @@ export class VoiceGraph extends React.Component {
     ];
     return (
       <LineChart
-        width={800}
         height={400}
         hidePoints={true /* don't render the data points */}
         interpolate={null /* don't try to guess data between points */}

@@ -1,6 +1,7 @@
 import React from "react";
 import { VoiceGraph } from "./VoiceGraph";
 import { SuppressionTechniquesList } from "./SuppressionTechniquesList";
+import { GenderDistribution } from "./GenderDistribution";
 import AudioRecorder from "./AudioRecorder";
 import "./App.css";
 
@@ -15,9 +16,10 @@ export default function App() {
         <AudioRecorder />
         <div style={{ flexGrow: 1 }}>
           <VoiceGraph />
+          <GenderDistribution />
         </div>
 
-        <div style={{ width: '400px' }}>
+        <div style={{ width: "400px" }}>
           <SuppressionTechniquesList />
         </div>
       </div>

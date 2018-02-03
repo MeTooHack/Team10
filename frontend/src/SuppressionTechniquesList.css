@@ -1,35 +1,34 @@
 .suppression-list {
-    margin: 10px;
+  margin: 10px;
 }
 
 .suppression-technique {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .suppression-name {
-    width: 75%;
+  width: 75%;
 }
 .suppression-technique:not(:first-child) .suppression-name {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 .suppression-technique:nth-child(even) .suppression-name {
-    align-self: flex-start;
-    text-align: left;
+  align-self: flex-start;
+  text-align: left;
 }
 .suppression-technique:nth-child(odd) .suppression-name {
-    align-self: flex-end;
-    text-align: right;
+  align-self: flex-end;
+  text-align: right;
 }
-
 
 .suppression-desc {
 }
 .suppression-technique:nth-child(even) .suppression-desc {
-    align-self: flex-start;
-    text-align: left;
+  align-self: flex-start;
+  text-align: left;
 }
 .suppression-technique:nth-child(odd) .suppression-desc {
-    align-self: flex-end;
-    text-align: right;
+  align-self: flex-end;
+  text-align: right;
 }
