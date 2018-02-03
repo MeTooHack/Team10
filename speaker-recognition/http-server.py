@@ -2,6 +2,8 @@ from flask import Flask, request
 import os
 import subprocess
 import uuid
+from scipy.io import wavfile
+
 app = Flask(__name__)
 
 @app.route("/data/<string:user>", methods=['POST'])
@@ -46,6 +48,26 @@ def classify():
     print(user)
     os.remove(path)
     return user
+
+
+@app.route("/amplitude", methods=['POST'])
+def amplitude():
+    directory = '/root/speaker-recognition/tmp/'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    filename = str(uuid.uuid4()) + '.wav'
+    path = directory + filename
+    request.files['audio'].save(path)
+
+    sampFreq, snd = wavfile.read(path)
+    sampFreq = sampFreq / 10
+    result = [sum(snd[i:i+sampFreq]) for i in range(0, len(snd), sampFreq)]
+    result = map(lambda x: str(x), result)
+    answer = "[" + ", ".join(result) + "]"
+
+    os.remove(path)
+    return answer
 
 
 
