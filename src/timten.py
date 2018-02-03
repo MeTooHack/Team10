@@ -1,16 +1,26 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from pyAudioAnalysis import audioTrainTest as aT
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/gender')
+@app.route('/gender', methods=['POST'])
 def gender():
-    result = {
-        "male" : 0.51,
-        "female" : 0.49
-    }
+    
+    inputFile = request.files['audio']
+    inputFile.save('./lol.wav')
+    
+    classification = aT.fileClassification('./lol.wav', "pyAudioAnalysis/data/svmSpeakerFemaleMale","svm")
+    percentages = classification[1]
+    labels = classification[2]
+
+    result = {}
+    for i in range(0, len(labels)):
+        result[labels[i].lower()] = percentages[i]
+
     return jsonify(result)
 
 if __name__ == '__main__':
