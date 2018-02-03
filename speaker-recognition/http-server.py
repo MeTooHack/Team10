@@ -62,7 +62,7 @@ def amplitude():
 
     sampFreq, snd = wavfile.read(path)
     sampFreq = sampFreq / 10
-    result = [sum(snd[i:i+sampFreq]) for i in range(0, len(snd), sampFreq)]
+    result = [max(snd[i:i+sampFreq]) for i in range(0, len(snd), sampFreq)]
     result = map(lambda x: str(x), result)
     answer = "[" + ", ".join(result) + "]"
 
