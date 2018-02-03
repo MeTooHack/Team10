@@ -4,6 +4,13 @@ import { SuppressionTechniquesList } from "./SuppressionTechniquesList";
 import { GenderDistribution } from "./GenderDistribution";
 import AudioRecorder from "./AudioRecorder";
 import "./App.css";
+import "material-components-web/dist/material-components-web.min.css";
+
+import {
+  Toolbar,
+  ToolbarRow,
+  ToolbarTitle,
+} from 'rmwc/Toolbar';
 
 export default class App extends React.Component {
   state = {
@@ -18,12 +25,14 @@ export default class App extends React.Component {
     const { gender } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Team TÄN</h1>
-        </header>
+        <Toolbar>
+          <ToolbarRow>
+            <ToolbarTitle>Team TÄN</ToolbarTitle>
+          </ToolbarRow>
+        </Toolbar>
 
+        <AudioRecorder endpoint="http://localhost:5000/gender" onResponse={this.handleGenderResponse} />
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <AudioRecorder endpoint="http://localhost:5000/gender" onResponse={this.handleGenderResponse} />
           <div style={{ flexGrow: 1 }}>
             <VoiceGraph />
             {gender && <GenderDistribution {...gender}/>}

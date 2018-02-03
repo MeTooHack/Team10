@@ -8,7 +8,8 @@
     "react-dom": "^16.2.0",
     "react-linechart": "^1.1.12",
     "react-minimal-pie-chart": "^3.0.1",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "rmwc": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,8 +17,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "prettier":
-      "prettier --config package.json --write ./*.{js,json,css} src/*.{js,json,css} src/**/*.{js,json,css}"
+    "prettier": "prettier --config package.json --write ./*.{js,json,css} src/*.{js,json,css} src/**/*.{js,json,css}"
   },
   "devDependencies": {
     "flow-bin": "^0.64.0",

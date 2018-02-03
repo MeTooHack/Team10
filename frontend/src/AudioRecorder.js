@@ -1,5 +1,6 @@
 import React from "react";
 import MediaStreamRecorder from "msr";
+import { Button } from 'rmwc/Button';
 
 export default class AudioRecorder extends React.Component {
   constructor(props) {
@@ -76,19 +77,19 @@ export default class AudioRecorder extends React.Component {
     return (
       <div>
         <h2>Record Audio</h2>
-        <button onClick={this.start}>Start</button>
-        <button onClick={this.stop} disabled={!isRecording}>
+        <Button raised onClick={this.start}>Start</Button>
+        <Button raised onClick={this.stop} disabled={!isRecording}>
           Stop
-        </button>
-        <button onClick={this.resume} disabled={!isRecording}>
+        </Button>
+        <Button raised onClick={this.resume} disabled={!isRecording}>
           Resume
-        </button>
-        <button onClick={this.pause} disabled={!isRecording}>
+        </Button>
+        <Button raised onClick={this.pause} disabled={!isRecording}>
           Pause
-        </button>
-        <button onClick={this.analyse} disabled={!blob}>
+        </Button>
+        <Button raised onClick={this.analyse} disabled={!blob}>
           Analyse
-        </button>
+        </Button>
       </div>
     );
   }
