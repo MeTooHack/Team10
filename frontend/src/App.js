@@ -34,8 +34,8 @@ export default class App extends React.Component {
         <AudioRecorder endpoint="http://localhost:5000/gender" onResponse={this.handleGenderResponse} />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ flexGrow: 1 }}>
-            <VoiceGraph />
             {gender && <GenderDistribution {...gender}/>}
+            <VoiceGraph />
           </div>
 
           <div style={{ width: "400px" }}>
