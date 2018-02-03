@@ -7,7 +7,7 @@ const techniques = [
     {
         title: 'Interruptions',
         description: <div className="suppression-desc">If one line indicates that someone is talking and another line crosses that line from below we have a likely interruption. An example is show here
-            <img src="images/interruption.png" />
+            <img src="images/interruption.png" alt="example of how two lines crossing in a way that indicates an interruption"/>
         </div>
     },
     {
@@ -18,7 +18,7 @@ const techniques = [
 export function SuppressionTechniquesList() {
   return (
     <div className="suppression-list">
-      {techniques.map(t => <Technique key={t.name} technique={t} />)}
+      {techniques.map(t => <Technique key={t.title} technique={t} />)}
     </div>
   );
 }
