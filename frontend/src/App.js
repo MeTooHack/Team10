@@ -1,6 +1,6 @@
-import React from 'react';
-import { VoiceGraph } from './VoiceGraph';
-import './App.css';
+import React from "react";
+import { VoiceGraph } from "./VoiceGraph";
+import "./App.css";
 
 export default function App() {
   return (
@@ -13,4 +13,3 @@ export default function App() {
     </div>
   );
 }
-
