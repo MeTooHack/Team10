@@ -2,6 +2,8 @@
 
 The idea is to record meetings, discussions etc and identify voices and visualise data for who speaks when and how much etc.
 
+![Le awesome application](demo.png)
+
 ## How to run
 In order for this to work you need to clone the [pyAudioAnalysis repo](https://github.com/tyiannak/pyAudioAnalysis)
 
