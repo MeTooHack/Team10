@@ -13,10 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-
     "flow": "flow",
-    "prettier":
-      "prettier --config package.json --write ./*.{js,json,css} src/*.{js,json,css} src/**/*.{js,json,css}"
+    "prettier": "prettier --config package.json --write ./*.{js,json,css} src/*.{js,json,css} src/**/*.{js,json,css}"
   },
   "devDependencies": {
     "flow-bin": "^0.64.0",

@@ -9,6 +9,15 @@ export class VoiceGraph extends React.Component {
         points: [{ x: 1, y: 2 }, { x: 3, y: 5 }, { x: 7, y: -3 }]
       }
     ];
-    return <LineChart width={600} height={400} data={data} />;
+      return <LineChart
+          width={800}
+          height={400}
+
+          hidePoints={true /* don't render the data points */}
+          interpolate={null /* don't try to guess data between points */}
+
+          xLabel={'time'}
+          yLabel={'volume'}
+          data={data} />;
   }
 }
