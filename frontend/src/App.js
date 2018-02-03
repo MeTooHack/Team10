@@ -28,13 +28,19 @@ import {
 import { Button } from 'rmwc/Button';
 import { LinearProgress } from 'rmwc/LinearProgress';
 
+let x = 0;
+let colorIndex = 0;
+const colors = ['red', 'blue', 'green', 'yellow'];
+const colorsByName = {};
+
 export default class App extends React.Component {
   state = {
     isUserEnrollmentDialogOpen: false,
     userEnrollmentName: '',
     isRecording: false,
     isAnalysing: false,
-    hasAnalysed: false
+    hasAnalysed: false,
+    speakerData: {}
   }
 
   analyseInterval = async blob => {
@@ -88,8 +94,26 @@ export default class App extends React.Component {
       body: formData
     });
 
-    console.log(await response.text())
 
+    const name = await response.text();
+
+    if (!(name in colorsByName)) {
+      colorsByName[name] = colors[colorIndex++];
+    }
+
+    this.setState({
+      speakerData: {
+        ...this.state.speakerData,
+        [name]: {
+          name,
+          color: colorsByName[name],
+          points: ((this.state.speakerData[name] || {}).points || []).concat([{
+            x: x++,
+            y: 1
+          }])
+        }
+      }
+    })
   }
 
   async enroll() {
@@ -167,6 +191,8 @@ export default class App extends React.Component {
       else buttonLabel = 'Waiting for intial data';
     } else buttonLabel = 'Start Analysing';
 
+    const voiceGraphData = Object.values(this.state.speakerData);
+
     return (
       <div className="App">
         <Dialog
@@ -211,7 +237,7 @@ export default class App extends React.Component {
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ flexGrow: 1 }}>
             {gender && <GenderDistribution {...gender} />}
-            <VoiceGraph />
+            <VoiceGraph data={voiceGraphData}/>
           </div>
 
           <div style={{ width: "400px" }}>
